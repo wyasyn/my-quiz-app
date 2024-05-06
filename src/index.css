@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 0 0% 96%;
+        --foreground: 225 3% 25%;
+
+        --card: 0 0% 96%;
+        --card-foreground: 225 3% 25%;
+
+        --popover: 0 0% 96%;
+        --popover-foreground: 225 3% 25%;
+
+        --primary: 0 0% 96%;
+        --primary-foreground: 225 3% 25%;
+
+        --secondary: 213 13% 87%;
+        --secondary-foreground: 216 5% 61%;
+
+        --muted: 216 5% 61%;
+        --muted-foreground: 225 3% 25%;
+
+        --accent: 210 40% 96.1%;
+        --accent-foreground: 225 3% 25%;
+
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 210 40% 98%;
+
+        --font-sans: "Roboto", system-ui, -apple-system, BlinkMacSystemFont,
+            "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+            "Helvetica Neue", sans-serif;
+
+        --border: 216 5% 61%;
+        --input: 216 5% 61%;
+        --ring: 216 5% 61%;
+
+        --radius: 0.5rem;
+    }
+
+    .dark {
+        --background: 240 3% 11%;
+        --foreground: 0, 0%, 98%;
+
+        --card: 240 3% 11%;
+        --card-foreground: 0, 0%, 98%;
+
+        --popover: 240 3% 11%;
+        --popover-foreground: 0, 0%, 98%;
+
+        --primary: 240 3% 11%;
+        --primary-foreground: 0, 0%, 98%;
+
+        --secondary: 252 5% 20%;
+        --secondary-foreground: 216 4% 45%;
+
+        --muted: 216 4% 45%;
+        --muted-foreground: 0, 0%, 98%;
+
+        --accent: 217.2 32.6% 17.5%;
+        --accent-foreground: 0, 0%, 98%;
+
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 210 40% 98%;
+
+        --border: 216 4% 45%;
+        --input: 216 4% 45%;
+        --ring: 216 4% 45%;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground font-sans;
+    }
+}

@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/table";
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
+import { Home } from "lucide-react";
 
 const ScoresComponent = () => {
     const [scores, setScores] = useState<Score[]>([]);
@@ -48,14 +49,21 @@ const ScoresComponent = () => {
         <div className=" my-[3rem] ">
             <div className=" mb-6 flex items-center justify-between ">
                 <h2 className=" text-2xl ">High Scores</h2>
-                <Link to={`/`}>
-                    <Button
-                        size="sm"
-                        className=" bg-foreground text-background hover:text-foreground hover:outline "
-                    >
-                        Try Again
-                    </Button>
-                </Link>
+                <div className=" flex items-center justify-center gap-4 ">
+                    <Link to={`/`}>
+                        <Button size="sm" variant="ghost">
+                            <Home size={20} />
+                        </Button>
+                    </Link>
+                    <Link to={`/quiz`}>
+                        <Button
+                            size="sm"
+                            className=" bg-foreground text-background hover:text-foreground hover:outline "
+                        >
+                            Try Again
+                        </Button>
+                    </Link>
+                </div>
             </div>
 
             {error && <div>Error: {error.message}</div>}

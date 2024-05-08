@@ -4,6 +4,7 @@ import { Button } from "./ui/button";
 import { Circle } from "lucide-react";
 import ProgressBar from "./progressBar";
 import FormComponent from "./form";
+import trophy from "@/assets/trophy.gif";
 
 export type Question = {
     question: string;
@@ -139,28 +140,44 @@ export default function Quiz() {
         <div>
             {showResult ? (
                 <div>
-                    <div className="mt-5 md:mt-[5rem] flex gap-10 flex-col items-center justify-center md:flex-row ">
-                        <div className="border rounded-lg p-4 w-full max-w-[300px] shadow-md">
+                    <div className="mt-5 md:mt-[5rem] flex gap-10 flex-col items-center justify-center ">
+                        <div className="border border-muted/40 rounded-lg px-4 py-10 w-full text-center">
                             <h2 className="text-lg font-semibold mb-3">
-                                Results
+                                Quiz Results
                             </h2>
-                            <div className="grid gap-2">
-                                <p>Total score: {result.totalScore}</p>
-                                <p>Correct Answers: {result.correctAnswers}</p>
-                                <p>Wrong Answers: {result.wrongAnswers}</p>
+                            <div className=" flex items-center justify-center ">
+                                <img src={trophy} alt="trophy" />
+                            </div>
+                            <div className=" flex flex-col items-center justify-center ">
+                                <h3 className=" text-xl text-muted my-4 ">
+                                    Congratulations!
+                                </h3>
+                                <div>
+                                    <ProgressBar
+                                        score={result.totalScore}
+                                        total={selectedQuestions.length}
+                                    />
+                                </div>
+                            </div>
+                            <div className=" my-10 ">
+                                <p>
+                                    Congrats, you scored{" "}
+                                    <span className=" text-green-600 ">
+                                        {result.totalScore}
+                                    </span>{" "}
+                                    out of{" "}
+                                    <span className=" text-blue-600 ">
+                                        {selectedQuestions.length}{" "}
+                                    </span>{" "}
+                                    correct.
+                                </p>
                             </div>
                             <Button
-                                className=" bg-foreground text-background my-4 w-full hover:outline hover:text-foreground transition "
+                                className=" bg-foreground text-background my-4 w-fit hover:border hover:text-foreground transition "
                                 onClick={() => tryAgain()}
                             >
                                 Try Again
                             </Button>
-                        </div>
-                        <div>
-                            <ProgressBar
-                                score={result.totalScore}
-                                total={selectedQuestions.length}
-                            />
                         </div>
                     </div>
                     <div className=" mt-[5rem] ">
@@ -168,32 +185,38 @@ export default function Quiz() {
                     </div>
                 </div>
             ) : (
-                <div className="border p-4 rounded-lg mt-5 md:mt-[5rem]">
-                    <div
-                        style={{
-                            width: `${progress}%`,
-                        }}
-                        className={` h-1 bg-red-700 mt-1 mb-8 rounded-full `}
-                    />
+                <div className="border border-muted/40 p-4 rounded-lg mt-5 md:mt-[5rem]">
+                    <h2 className=" my-6 text-muted ">Frontend Quiz</h2>
+                    <div className=" border-2 border-muted/20 my-7 rounded-full ">
+                        <div
+                            style={{
+                                width: `${progress}%`,
+                            }}
+                            className={` h-2 bg-red-700 rounded-full `}
+                        />
+                    </div>
+
                     <div className="mb-3 flex items-center justify-between gap-4 ">
                         <div>
-                            <span className="font-bold text-xl">
-                                {currentQuestion + 1}
+                            <span className="font-bold text-2xl">
+                                Question {currentQuestion + 1}
                             </span>
-                            <span>/{selectedQuestions.length}</span>
+                            <span className=" text-muted ">
+                                /{selectedQuestions.length}
+                            </span>
                         </div>
                         <span className=" text-red-300 text-3xl ">
                             {formattedTimeLeft}
                         </span>
                     </div>
-                    <h2 className="text-lg font-semibold mt-2">{question}</h2>
-                    <div className="mt-4 grid gap-2">
+                    <h3 className="text-lg font-semibold mt-2">{question}</h3>
+                    <div className="mt-4 grid gap-4">
                         {choices.map((choice, index) => (
                             <Button
                                 key={index}
                                 onClick={() => onAnswerClick(choice, index)}
                                 disabled={choiceDisabled}
-                                className={`px-3 gap-3 py-2 rounded-md cursor-pointer hover:bg-secondary justify-start ${
+                                className={`px-3 gap-3 py-2 rounded-md cursor-pointer hover:bg-secondary justify-start text-muted border border-muted/40 ${
                                     index === answerIdx
                                         ? answer
                                             ? "bg-green-500 text-white"
@@ -213,7 +236,7 @@ export default function Quiz() {
                             </Button>
                         ))}
                     </div>
-                    <div className="mt-5">
+                    <div className="mt-10">
                         <Button
                             variant="outline"
                             size="sm"

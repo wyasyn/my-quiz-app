@@ -6,9 +6,9 @@ export default function Start() {
         <div>
             <div className="container">
                 <div>
-                    <div className="relative aspect-video rounded-lg ">
+                    <div className="relative aspect-video rounded-lg opacity-50 ">
                         <img
-                            className=" object-cover object-center w-full h-full mt-7 rounded-lg"
+                            className=" object-cover object-center w-full h-full mt-7 rounded-lg "
                             src={pattern}
                             alt="bg pattern"
                         />

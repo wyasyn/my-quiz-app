@@ -66,7 +66,11 @@ const ScoresComponent = () => {
                 </div>
             </div>
 
-            {error && <div>Error: {error.message}</div>}
+            {error && (
+                <div className=" text-red-600 my-4 ">
+                    Error: {error.message}
+                </div>
+            )}
 
             <Table>
                 <TableCaption>A list of the top 10 scores.</TableCaption>
